@@ -42,7 +42,8 @@ body,
 
 body {
   min-height: 100svh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--bg-deep);
   color: var(--ink);
 }

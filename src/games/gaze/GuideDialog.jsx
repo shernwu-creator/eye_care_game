@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { BrandMark, CloseIcon } from "./Icons";
+import { BrandMark, CloseIcon } from "../../components/Icons";
 
 export default function GuideDialog({ open, rounds, onClose }) {
   const closeButtonRef = useRef(null);

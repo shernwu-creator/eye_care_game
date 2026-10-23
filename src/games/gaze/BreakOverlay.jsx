@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { ArrowUpRightIcon, BrandMark, CheckIcon } from "./Icons";
-import { BREAK_SECONDS } from "../lib/time";
+import { ArrowUpRightIcon, BrandMark, CheckIcon } from "../../components/Icons";
+import { BREAK_SECONDS } from "../../lib/time";
 
 function BreakDial({ seconds }) {
   const radius = 92;

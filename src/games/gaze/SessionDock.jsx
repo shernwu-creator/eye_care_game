@@ -6,8 +6,8 @@ import {
   PauseIcon,
   PlayIcon,
   ResetIcon,
-} from "./Icons";
-import { DURATION_OPTIONS, formatTime } from "../lib/time";
+} from "../../components/Icons";
+import { DURATION_OPTIONS, formatTime } from "../../lib/time";
 
 function TimerRing({ remaining, total, status }) {
   const viewSize = 78;

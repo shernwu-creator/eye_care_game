@@ -58,6 +58,14 @@ export function ResetIcon({ size = 18 }) {
   );
 }
 
+export function ChevronLeftIcon({ size = 16 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M9.8 3.8 5.6 8l4.2 4.2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function ChevronDownIcon({ size = 14 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
