@@ -3,6 +3,7 @@ import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-d
 import Home from "./pages/Home";
 import BlinkGame from "./games/blink/BlinkGame";
 import FocusGame from "./games/focus/FocusGame";
+import DynamicVisionGame from "./components/DynamicVisionGame";
 import GazeGame from "./games/gaze/GazeGame";
 
 function ScrollToTop() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/gaze" element={<GazeGame />} />
         <Route path="/focus" element={<FocusGame />} />
         <Route path="/blink" element={<BlinkGame />} />
+        <Route path="/vision" element={<DynamicVisionGame />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>

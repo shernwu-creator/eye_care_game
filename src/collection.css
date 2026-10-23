@@ -74,7 +74,7 @@
 }
 
 .game-header .brand__tagline {
-  max-width: 170px;
+  max-width: 220px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -533,7 +533,7 @@
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -593,6 +593,11 @@
 .game-card--cream {
   --card-glow: rgba(212, 219, 181, 0.14);
   --card-accent: #d5dcb9;
+}
+
+.game-card--teal {
+  --card-glow: rgba(158, 211, 190, 0.15);
+  --card-accent: #b4d7c3;
 }
 
 .game-card__preview {
@@ -1023,6 +1028,111 @@
 .blink-art__eye i:nth-child(4) {
   right: 22%;
   transform: rotate(-18deg);
+}
+
+/* Dynamic vision card art */
+
+.card-art--vision {
+  background:
+    radial-gradient(ellipse 65% 60% at 62% 52%, rgba(154, 204, 176, 0.14), transparent 67%),
+    linear-gradient(165deg, #16392d 0%, #0c271f 100%);
+}
+
+.vision-art__glow {
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  width: 72%;
+  aspect-ratio: 1.8;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(190, 221, 199, 0.12), transparent 66%);
+  transform: translateX(-50%);
+}
+
+.vision-art__ring {
+  position: absolute;
+  border: 1px solid rgba(185, 220, 195, 0.09);
+  border-radius: 50%;
+}
+
+.vision-art__ring--one {
+  top: 38%;
+  left: 50%;
+  width: 68%;
+  aspect-ratio: 2.1;
+  transform: translate(-50%, -50%);
+}
+
+.vision-art__ring--two {
+  top: 50%;
+  left: 49%;
+  width: 38%;
+  aspect-ratio: 1.6;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  border-color: rgba(185, 220, 195, 0.06);
+}
+
+.vision-art__circle {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border: 1px solid rgba(214, 236, 212, 0.2);
+  border-radius: 50%;
+  background: rgba(246, 252, 242, 0.91);
+  box-shadow:
+    0 4px 12px rgba(2, 20, 11, 0.17),
+    0 0 18px rgba(174, 217, 177, 0.08);
+  color: rgba(6, 95, 70, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  animation: visionCardFloat 6.5s ease-in-out infinite;
+}
+
+.vision-art__circle--one {
+  top: 27%;
+  left: 25%;
+  animation-delay: -1.4s;
+}
+
+.vision-art__circle--two {
+  top: 55%;
+  left: 47%;
+  width: 36px;
+  height: 36px;
+  font-size: 12px;
+  animation-delay: -3.2s;
+}
+
+.vision-art__circle--three {
+  top: 31%;
+  right: 21%;
+  width: 27px;
+  height: 27px;
+  font-size: 10px;
+  animation-delay: -5s;
+}
+
+.vision-art__trail {
+  position: absolute;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(187, 221, 195, 0.18) 0 3px, transparent 3px 7px);
+  transform-origin: left center;
+}
+
+.vision-art__trail--one {
+  top: 43%;
+  left: 30%;
+  width: 27%;
+  transform: rotate(14deg);
+}
+
+.vision-art__trail--two {
+  top: 47%;
+  left: 51%;
+  width: 22%;
+  transform: rotate(-17deg);
 }
 
 /* --------------------------------------------------------------------------
@@ -1731,6 +1841,10 @@
   .game-title {
     font-size: clamp(32px, 4vw, 48px);
   }
+
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 1020px) {
@@ -2363,5 +2477,15 @@
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(3.2);
+  }
+}
+
+@keyframes visionCardFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2px, -7px, 0) scale(1.04);
   }
 }
