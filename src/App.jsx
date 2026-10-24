@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import BlinkGame from "./games/blink/BlinkGame";
 import FocusGame from "./games/focus/FocusGame";
 import DynamicVisionGame from "./components/DynamicVisionGame";
+import GaborTraining from "./games/gabor/GaborTraining";
 import GazeGame from "./games/gaze/GazeGame";
 
 function ScrollToTop() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/focus" element={<FocusGame />} />
         <Route path="/blink" element={<BlinkGame />} />
         <Route path="/vision" element={<DynamicVisionGame />} />
+        <Route path="/gabor" element={<GaborTraining />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AmbientScene from "../components/AmbientScene";
 import { ArrowUpRightIcon, BrandMark } from "../components/Icons";
 import FlowerHead from "../components/FlowerHead";
+import GaborPatch from "../components/GaborPatch";
 
 function GazeArt() {
   return (
@@ -78,6 +79,23 @@ function VisionArt() {
   );
 }
 
+function GaborArt() {
+  return (
+    <span className="card-art card-art--gabor" aria-hidden="true">
+      <span className="gabor-art__glow" />
+      <span className="gabor-art__ring gabor-art__ring--outer" />
+      <span className="gabor-art__ring gabor-art__ring--inner" />
+      <span className="gabor-art__patch gabor-art__patch--one">
+        <GaborPatch angle={22} frequency={4.2} size={64} />
+      </span>
+      <span className="gabor-art__patch gabor-art__patch--two">
+        <GaborPatch angle={112} frequency={5.4} size={46} />
+      </span>
+      <span className="gabor-art__label">GABOR</span>
+    </span>
+  );
+}
+
 const GAMES = [
   {
     number: "01",
@@ -123,6 +141,17 @@ const GAMES = [
     tone: "teal",
     art: <VisionArt />,
   },
+  {
+    number: "05",
+    path: "/gabor",
+    title: "卡伯爾視覺訓練",
+    english: "GABOR TRAINING",
+    description: "以條紋頻率與柔和對比刺激視覺皮層，透過四種小練習訓練眼睛與大腦。",
+    duration: "1–3 分鐘",
+    tags: ["視覺皮層", "對比敏感度"],
+    tone: "aqua",
+    art: <GaborArt />,
+  },
 ];
 
 export default function Home() {
@@ -151,7 +180,7 @@ export default function Home() {
 
         <div className="home-header__meta">
           <span className="home-header__count">
-            <b>04</b> 個練習
+            <b>05</b> 個練習
           </span>
           <span className="home-header__divider" />
           <span className="home-header__edition">VOL. 01</span>
@@ -166,7 +195,7 @@ export default function Home() {
             <span className="hero-eyebrow__line" />
           </p>
           <h1 className="home-title" id="home-title">
-            給眼睛的<span className="home-title__rest"><em>四種散步</em>。</span>
+            給眼睛的<span className="home-title__rest"><em>五種散步</em>。</span>
           </h1>
           <p className="home-intro">
             呼吸、眨眼，望向遠方。挑一個練習，讓視線在綠意裡慢慢鬆開。
@@ -184,7 +213,7 @@ export default function Home() {
         <section className="game-library" aria-labelledby="game-library-title">
           <div className="game-library__head">
             <h2 id="game-library-title">選擇今天的練習</h2>
-            <span>04 EXPERIENCES</span>
+            <span>05 EXPERIENCES</span>
           </div>
 
           <div className="game-grid">

@@ -415,7 +415,7 @@
 .home-main {
   position: relative;
   z-index: 5;
-  width: min(1180px, calc(100vw - 48px));
+  width: min(1280px, calc(100vw - 64px));
   margin: 0 auto;
   padding: clamp(26px, 4.6vh, 46px) 0 0;
 }
@@ -533,7 +533,7 @@
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -600,6 +600,11 @@
   --card-accent: #b4d7c3;
 }
 
+.game-card--aqua {
+  --card-glow: rgba(137, 215, 200, 0.16);
+  --card-accent: #a7ddd1;
+}
+
 .game-card__preview {
   position: relative;
   display: block;
@@ -659,7 +664,7 @@
 .game-card__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(22px, 2vw, 27px);
+  font-size: clamp(20px, 1.65vw, 23px);
   font-weight: 400;
   letter-spacing: 0.06em;
   color: #dfead8;
@@ -743,7 +748,7 @@
   align-items: center;
   justify-content: center;
   gap: 13px;
-  width: min(1180px, calc(100vw - 48px));
+  width: min(1280px, calc(100vw - 64px));
   margin: clamp(25px, 4vh, 38px) auto 0;
   padding-top: 15px;
   border-top: 1px solid rgba(196, 224, 198, 0.07);
@@ -1133,6 +1138,88 @@
   left: 51%;
   width: 22%;
   transform: rotate(-17deg);
+}
+
+/* Gabor card art */
+
+.card-art--gabor {
+  background:
+    radial-gradient(ellipse 66% 68% at 66% 42%, rgba(114, 196, 174, 0.17), transparent 66%),
+    linear-gradient(165deg, #15362f 0%, #0a241e 100%);
+}
+
+.gabor-art__glow {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 68%;
+  aspect-ratio: 1.7;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(170, 225, 207, 0.12), transparent 66%);
+  transform: translateX(-50%);
+}
+
+.gabor-art__ring {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  border: 1px solid rgba(186, 228, 215, 0.09);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gabor-art__ring--outer {
+  width: 66%;
+  aspect-ratio: 1.8;
+}
+
+.gabor-art__ring--inner {
+  width: 36%;
+  aspect-ratio: 1.3;
+  border-color: rgba(186, 228, 215, 0.06);
+}
+
+.gabor-art__patch {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(214, 240, 232, 0.16);
+  border-radius: 50%;
+  box-shadow:
+    0 12px 26px rgba(1, 14, 9, 0.24),
+    0 0 28px rgba(145, 213, 192, 0.08);
+  animation: gaborCardFloat 7s ease-in-out infinite;
+}
+
+.gabor-art__patch--one {
+  top: 17%;
+  right: 16%;
+  width: 64px;
+  height: 64px;
+}
+
+.gabor-art__patch--two {
+  right: 41%;
+  bottom: 13%;
+  width: 46px;
+  height: 46px;
+  opacity: 0.7;
+  animation-delay: -3.6s;
+}
+
+.gabor-art__patch .gabor-patch {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.gabor-art__label {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 6px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  color: rgba(192, 225, 213, 0.34);
 }
 
 /* --------------------------------------------------------------------------
@@ -1845,6 +1932,39 @@
   .game-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .home-main,
+  .home-footer {
+    width: min(900px, calc(100vw - 40px));
+  }
+
+  .game-card__title {
+    font-size: 24px;
+  }
+
+  .game-card,
+  .game-card:nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1180px) {
+  .game-card:last-child {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .game-card:last-child .game-card__preview {
+    width: 38%;
+    height: auto;
+    min-height: 160px;
+    border-right: 1px solid rgba(196, 224, 198, 0.08);
+    border-bottom: 0;
+  }
+
+  .game-card:last-child .game-card__body {
+    width: 62%;
+  }
 }
 
 @media (max-width: 1020px) {
@@ -2043,6 +2163,12 @@
   .game-grid {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .game-card,
+  .game-card:nth-last-child(-n + 2),
+  .game-card:last-child {
+    grid-column: auto;
   }
 
   .game-card {
@@ -2410,7 +2536,8 @@
   .game-card,
   .home-hero,
   .game-library,
-  .home-header {
+  .home-header,
+  .site-header {
     animation: none;
   }
 
@@ -2487,5 +2614,15 @@
   }
   50% {
     transform: translate3d(2px, -7px, 0) scale(1.04);
+  }
+}
+
+@keyframes gaborCardFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0) rotate(1.5deg);
   }
 }
